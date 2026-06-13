@@ -57,6 +57,15 @@ st.write(
     "each relationship to a confidence tier (VERIFIED / HIGH PROBABILITY / POSSIBLE / "
     "UNVERIFIED NAME MATCH), and produces a numbered, source-cited PDF.")
 
+st.error(
+    "**Read first.** This is a research **screening aid**, not an accusation, a legal "
+    "finding, or proof of wrongdoing. Every name, relationship, donation, vote, and "
+    "tier is a **lead that must be independently verified against the cited primary "
+    "source** before it is relied on or repeated — a shared name is not proof of the "
+    "same person. **Nothing here establishes a legal conflict of interest, ethics "
+    "violation, or crime.** Contributions and lobbying shown are lawful, publicly "
+    "disclosed activity provided for context. Use responsibly.")
+
 st.divider()
 
 mode = st.radio(

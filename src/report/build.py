@@ -22,7 +22,7 @@ from ..models import Finding, Legislator
 # Program identity (the user-facing name).
 PROGRAM_NAME = "CTCannabisPoliticalCheck"
 DISPLAY_NAME = "CT Cannabis Political Check"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 
 
 def app_version() -> str:
@@ -106,6 +106,19 @@ _PRIO_RANK = {"HIGH": 3, "MEDIUM": 2, "LOW": 1, "": 0}
 CAVEAT = ("CAVEAT: 'No match found' means no match was found in the queried "
           "sources — NOT proof of no involvement. Any source that could not be "
           "exhaustively queried (e.g. a rate-limited interactive portal) is flagged.")
+
+# Hard disclaimer printed prominently on the cover and in the app: every item is an
+# UNVERIFIED LEAD until a human confirms it against the cited primary source, and
+# nothing here is a legal conclusion.
+DISCLAIMER = (
+    "IMPORTANT — READ FIRST: This is a research SCREENING AID, not an accusation, a "
+    "legal finding, or proof of wrongdoing. Every name, relationship, donation, vote, "
+    "and tier below is a LEAD THAT MUST BE INDEPENDENTLY VERIFIED against the cited "
+    "primary source before it is relied on or repeated. A shared name is not proof of "
+    "the same person. Nothing here establishes a legal conflict of interest, ethics "
+    "violation, or crime — those are determinations only a court or the proper "
+    "authority can make. Contributions and lobbying shown are LAWFUL, PUBLICLY "
+    "DISCLOSED activity provided for context, not allegations. Use responsibly.")
 
 
 def _per_member(legislators: list[Legislator], findings: list[Finding]) -> dict:
@@ -671,6 +684,13 @@ def write_findings_pdf(path: Path, findings: list[Finding], recusals: list,
     S.append(Spacer(1, 6))
     S.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor("#16412b")))
     S.append(Spacer(1, 6))
+    # Prominent verification / no-legal-implications disclaimer box.
+    disc = ParagraphStyle("disc", parent=small, textColor=colors.HexColor("#7a1e1e"),
+                          borderColor=colors.HexColor("#7a1e1e"), borderWidth=1,
+                          borderPadding=6, backColor=colors.HexColor("#fbf3f3"),
+                          leading=12)
+    S.append(Paragraph("<b>" + _esc(DISCLAIMER) + "</b>", disc))
+    S.append(Spacer(1, 6))
     S.append(Paragraph(_esc(CAVEAT), note))
     S.append(Spacer(1, 8))
 
@@ -754,9 +774,24 @@ def write_findings_pdf(path: Path, findings: list[Finding], recusals: list,
             col = TIER_COLOR.get(tier, "#333333")
             kin = ("self" if top.get("same_first") and
                    top.get("name_similarity", 0) >= 92 else "self / relative")
-            official = (f"<b>{_esc(top['person'])}</b><br/>{_esc(top['role'])}<br/>"
+            # all identity/relationship sources for this official (used both for the
+            # inline "verify identity" link by the name AND the verification line).
+            srcs = []
+            for d in ds:
+                for u in (d.get("source_urls", [])
+                          + d.get("resolution", {}).get("sources", [])):
+                    if u and u not in srcs:
+                        srcs.append(u)
+            # YEARS OF ACTIVE SERVICE (context the user asked for, every section).
+            yrs = (top.get("years_served") or "").strip()
+            served = (f"<br/>Served: <b>{_esc(yrs)}</b>" if yrs
+                      else "<br/>Served: <i>(years not in dataset)</i>")
+            # LIVE source link RIGHT BY THE NAME that validates this is the same person.
+            id_link = (f"<br/>{refs.link(srcs[0], 'identity source &#8599;')}"
+                       if srcs else "<br/><font color='#7a1e1e'>no identity source</font>")
+            official = (f"<b>{_esc(top['person'])}</b><br/>{_esc(top['role'])}{served}<br/>"
                         f"{_esc(top['party'])}, {_esc(top['district_or_town'])}<br/>"
-                        f"<i>({kin})</i>")
+                        f"<i>({kin})</i>{id_link}")
             ties = []
             for d in ds[:6]:
                 ties.append(
@@ -784,14 +819,8 @@ def write_findings_pdf(path: Path, findings: list[Finding], recusals: list,
                             f"{refs.cite(eurl) if eurl else ''}")
             # VERIFICATION line on EVERY row: list the clickable sources, or state
             # plainly that none was located (no line item is left unverified-looking).
-            srcs = []
-            for d in ds:
-                for u in (d.get("source_urls", [])
-                          + d.get("resolution", {}).get("sources", [])):
-                    if u and u not in srcs:
-                        srcs.append(u)
             if srcs:
-                bits.append("<b>Verification:</b> "
+                bits.append("<b>Verification (same-person sources):</b> "
                             + "".join(refs.cite(u) for u in srcs[:4]))
             else:
                 bits.append("<b><font color='#7a1e1e'>Verification: NO PRIMARY SOURCE "
@@ -1002,7 +1031,41 @@ def write_findings_pdf(path: Path, findings: list[Finding], recusals: list,
             flowables.append(_wrap_table(
                 ["Organization", "Registered communicators", "City / year (source)"],
                 rrows, [150, PAGE_W - 320, 170], cell, cellh))
-        _section(_H2("Cannabis Lobbying (CT Office of State Ethics)"), *flowables)
+        # DONATIONS tied to these cannabis-lobby orgs — giver, recipient, amount, date
+        # (joined from the SEEC eCRIS contributions by employer/organization name).
+        cf_rows = (campaign_finance or {}).get("rows", [])
+        org_names = [g.get("organization", "") for g in lob_roster]
+
+        def _org_for(employer):
+            e = (employer or "").lower()
+            for o in org_names:
+                for tok in (o or "").lower().split():
+                    if len(tok) >= 5 and tok not in ("cannabis", "chamber", "commerce",
+                                                     "connecticut") and tok in e:
+                        return o
+            return ""
+        dono = [(_org_for(r.get("employer")), r) for r in cf_rows]
+        dono = [(o, r) for o, r in dono if o]
+        if dono:
+            drows = []
+            for o, r in dono[:40]:
+                drows.append([
+                    f"<b>{_esc(r.get('donor'))}</b><br/><i>{_esc(o)}</i>",
+                    f"{_esc(r.get('legislator') or r.get('committee'))}"
+                    + (f"<br/>{_esc(r.get('office'))}"
+                       + (f", Dist. {_esc(str(r.get('district')))}"
+                          if r.get('district') else "") if r.get('office') else ""),
+                    f"<b>${r.get('amount', 0):,.0f}</b><br/>{_esc(r.get('date'))}"
+                    + refs.cite(r.get('source_url', ''))])
+            flowables.append(Paragraph(
+                "<b>Disclosed contributions linked to these cannabis-lobby "
+                "organizations</b> (giver &#8594; recipient, amount, date &#8212; from "
+                "SEEC eCRIS; lawful, publicly disclosed):", small))
+            flowables.append(_wrap_table(
+                ["Giver (and organization)", "Recipient",
+                 "Amount and date (source)"],
+                drows, [160, PAGE_W - 330, 170], cell, cellh))
+        _section(_H2("Cannabis Lobbying &amp; Money (CT OSE + SEEC)"), *flowables)
         S.append(Spacer(1, 8))
 
     # ---- SECTION 3 — MUNICIPAL LEADERS + CONNECTIONS -----------------------

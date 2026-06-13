@@ -1,4 +1,10 @@
-# CT Cannabis Political Check — v1.0
+# CT Cannabis Political Check — v1.1
+
+> **One program, one file.** Prefer a single download? Grab
+> **`CTCannabisPoliticalCheck_app.py`** from the release — it embeds every module and
+> data file and runs on its own (`python3 CTCannabisPoliticalCheck_app.py --offline`).
+> Developers can still use the package below; `python3 build_single_file.py`
+> regenerates the standalone file.
 
 **`CTCannabisPoliticalCheck`** — a reproducible Connecticut Cannabis Political
 Relationship Intelligence tool. It screens **every CT state legislator (current and
@@ -17,6 +23,16 @@ python3 CTCannabisPoliticalCheck.py            # LIVE (data.ct.gov + web)
 python3 CTCannabisPoliticalCheck.py --offline  # offline demo (deterministic, fast)
 streamlit run streamlit_app.py                 # web UI
 ```
+
+## New in 1.1
+
+- **Single-file build** — the whole program in one `CTCannabisPoliticalCheck_app.py`.
+- **Years of active service** shown for every legislator (senators + reps).
+- **A clickable identity-source link next to every name** (validate it is the same
+  person) plus a per-row verification line.
+- **Prominent verification / no-legal-implications disclaimer** on the cover and app.
+- **Lobbying & money** — the cannabis-lobby section now reports disclosed contributions
+  (giver → recipient, amount, date) linked to those organizations.
 
 ## New in 1.0
 
