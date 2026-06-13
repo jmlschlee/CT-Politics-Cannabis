@@ -1,5 +1,5 @@
 {
-  "next": 32,
+  "next": 33,
   "history": [
     {
       "number": 1,
@@ -310,6 +310,16 @@
       "legislators": 9,
       "cross_referenced": 9,
       "host_towns": 1
+    },
+    {
+      "number": 32,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_32.pdf",
+      "downloads_pdf": null,
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
     }
   ]
 }

@@ -698,11 +698,14 @@ def write_findings_pdf(path: Path, findings: list[Finding], recusals: list,
                                backColor=colors.HexColor("#7a1e1e"), borderPadding=7,
                                leading=12)
         S.append(Paragraph(
-            "&#9888; OFFLINE DEMO &#8212; SYNTHETIC TEST DATA. Every name, business, "
-            "donation, lobbyist, and vote below is a FICTIONAL fixture used to "
-            "demonstrate the format. It is NOT real and describes NO real person. "
-            "Run the program LIVE (the default; omit --offline) for real, sourced "
-            "data from data.ct.gov, SEEC, OSE, and cga.ct.gov.", synth))
+            "&#9888; OFFLINE DEMO &#8212; SYNTHETIC FIXTURES. The legislator, "
+            "campaign-finance, and lobbyist entries below use FICTIONAL names "
+            "(Hallowell, Vance, Aldenberry, Brightwood, &#8230;) to demonstrate the "
+            "report format &#8212; they are NOT findings and describe NO real "
+            "official's conduct. (The Simsbury / Glassman municipal item is a real, "
+            "publicly-sourced example.) For a real-data report on actual current "
+            "officials, run the program LIVE &#8212; the default; omit --offline "
+            "&#8212; against data.ct.gov, SEEC, OSE, and cga.ct.gov.", synth))
         S.append(Spacer(1, 8))
     S.append(Paragraph(_esc(CAVEAT), note))
     S.append(Spacer(1, 8))

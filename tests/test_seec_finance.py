@@ -16,7 +16,7 @@ _GRID = """
   <tr><th>Receipt ID</th><th>Committee</th><th>Received From</th><th>City</th>
       <th>Office Sought</th><th>District</th><th>Employer</th>
       <th>Transaction Date</th><th>Amount</th></tr>
-  <tr><td>C1224991</td><td>Witkos 2020</td><td>Esther Witkos</td><td>Canton</td>
+  <tr><td>C1224991</td><td>Witkos 2020</td><td>Eleanor Brightwood</td><td>Canton</td>
       <td>State Senator</td><td>8</td><td>Curaleaf</td><td>05/11/2020</td>
       <td>50.00</td></tr>
 </table>
@@ -27,7 +27,7 @@ def test_parse_grid_maps_headers_to_values():
     rows = parse_grid(_GRID)
     assert len(rows) == 1
     r = rows[0]
-    assert r["Received From"] == "Esther Witkos"
+    assert r["Received From"] == "Eleanor Brightwood"
     assert r["Office Sought"] == "State Senator"
     assert r["Employer"] == "Curaleaf"
     assert r["Amount"] == "50.00"
@@ -52,7 +52,7 @@ def test_offline_collector_loads_fixture():
     c = SeecCampaignFinance(offline=True)
     out = c.collect(["Curaleaf"], ["Diane Folger"])
     assert len(out) == 3
-    assert any(x.contributor_name == "Esther Witkos" and x.employer == "Curaleaf"
+    assert any(x.contributor_name == "Eleanor Brightwood" and x.employer == "Curaleaf"
                for x in out)
     assert c.last_status[0] == "fixture"
 
