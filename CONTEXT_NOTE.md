@@ -2,6 +2,38 @@
 
 Periodically-saved progress for this build. See HANDOFF.md for the resume brief.
 
+## 1.1.1 — CRITICAL FALSE-ATTRIBUTION FIX + LIVE-FIRST (2026-06-12)
+User: "vincent candelora is nowhere on green leaf holdings llc nor does he lobby for
+cannabis... major hallucination... links lead to broken pages... ALWAYS run live."
+ROOT CAUSE: the false positives were in the OFFLINE FIXTURES (synthetic demo data),
+NOT the live pipeline. The original golden-test fixtures attached REAL CT legislators'
+names (Vincent Candelora HD-86, Juan Candelaria HD-95) to fake cannabis records
+(`business_registry.json` Green Leaf Holdings member; I had also added a fabricated
+`ose_lobbyists.json` Candelora/Curaleaf entry). The offline demo report rendered these
+as real findings → defamation-by-fixture.
+FIXES (all shipped, release v1.1.1 id 338886288):
+- Fictionalized report-facing real names → Gregory Hallowell / Marcus Vance (+ private
+  donors/lobbyists Witkos→Brightwood, Burnes/Fell/Gibbs/Tirella→fictional). KEPT the
+  protective never-merge guard for the REAL Candelaria/Candelora pair in matcher.py +
+  config.yaml (that protects them in LIVE runs; it does NOT attribute cannabis).
+- OFFLINE reports now show a loud red "SYNTHETIC FIXTURES" banner (mode!=LIVE) naming
+  the fictional names + noting the Simsbury/Glassman municipal item is real-sourced.
+- Broken links fixed: stripped fake `?id=`/`?type=` params from fixture URLs → real CT
+  portal roots; findings identity-link now prefers web-evidence sources (that NAME the
+  person) and only real http(s) URLs; honest "verify same person" label (only VERIFIED
+  tier = certain).
+- LIVE-FIRST: reduced politeness delays (per_host 2.0→0.8, web 0.8→0.4, SEEC 1.5→0.8)
+  so a full LIVE run now completes in ~4 MIN (was 40+). Program already defaults to live.
+- **VERIFIED LIVE report #32** (12pp, all sections combined, REAL data): §1 Senators =
+  **Art Linares VERIFIED** (Connecticut Social Equity LLC / Rodeo) w/ real CT Examiner +
+  CT Insider news links; 111 leads; SEEC + OSE + CGA roll-calls + 53-town municipal; NO
+  synthetic banner (live); NO Candelora false positive. Copied to Downloads.
+  Live Candelaria→"The Goods THC Co." is a REAL registry match flagged PROBABLE for
+  human verification (correct behavior, not fabricated).
+- KNOWN minor: voting-stance web search returns a few tangential citations (NPS/Wikipedia)
+  — cosmetic noise in the voting section, not the identity links.
+- VERSION→1.1.1. 64 tests pass.
+
 ## 1.1.0 — SINGLE FILE + REPORT FEATURES (2026-06-12)
 Release https://github.com/jmlschlee/CT-Politics-Cannabis/releases/tag/v1.1.0 (id
 338883752). User asks handled:
