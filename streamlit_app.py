@@ -68,28 +68,23 @@ st.error(
 
 st.divider()
 
-mode = st.radio(
-    "Run mode",
-    ["Offline demo (fast, bundled fixtures)",
-     "Live (data.ct.gov + web) — slower, may exceed free-tier limits"],
-    index=0)
-offline = mode.startswith("Offline")
+offline = False  # LIVE ONLY — this tool never uses synthetic/demo data.
+st.warning("This is a LIVE investigative tool: it fetches ~16k legislators plus live "
+           "web / SEEC / OSE / cga.ct.gov lookups against real public records and can "
+           "take a few minutes. It never uses synthetic or demo data. On a hosted "
+           "free tier a full run may exceed memory/time limits — run locally for the "
+           "complete report.")
 
-if not offline:
-    st.warning("A live run fetches ~16k legislators plus live web/SEEC/OSE/CGA "
-               "lookups and can take several minutes — it may exceed hosted free-tier "
-               "memory/time. For a quick look, use the offline demo.")
-
-if st.button("Run screening"):
-    with st.spinner("Running the screening pipeline…"):
+if st.button("Run live screening"):
+    with st.spinner("Running the LIVE screening pipeline against real public sources…"):
         try:
             from src.config import config
             from src.pipeline import Pipeline
             from src.municipal import MunicipalPipeline
             from src.report import finalize_report
 
-            result = Pipeline(offline=offline).run()
-            municipal = MunicipalPipeline(offline=offline).run()
+            result = Pipeline(offline=False).run()
+            municipal = MunicipalPipeline(offline=False).run()
             rep = finalize_report(result, config(), municipal=municipal,
                                   push_to_downloads=False)
         except Exception as e:  # noqa: BLE001
@@ -98,7 +93,7 @@ if st.button("Run screening"):
 
     c = result.counts
     st.success(f"Report #{rep['number']} generated "
-               f"({'OFFLINE demo' if offline else 'LIVE'}).")
+               "(LIVE — real public sources).")
     a, b, d = st.columns(3)
     a.metric("Legislators", f"{c.get('legislators', 0):,}")
     b.metric("Cannabis people", f"{c.get('cannabis_persons', 0):,}")

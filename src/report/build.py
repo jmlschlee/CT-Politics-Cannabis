@@ -22,7 +22,7 @@ from ..models import Finding, Legislator
 # Program identity (the user-facing name).
 PROGRAM_NAME = "CTCannabisPoliticalCheck"
 DISPLAY_NAME = "CT Cannabis Political Check"
-VERSION = "1.1.1"
+VERSION = "1.2.0"
 
 
 def app_version() -> str:

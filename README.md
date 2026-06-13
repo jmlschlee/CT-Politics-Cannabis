@@ -1,10 +1,16 @@
-# CT Cannabis Political Check — v1.1
+# CT Cannabis Political Check — v1.2
 
-> **One program, one file.** Prefer a single download? Grab
-> **`CTCannabisPoliticalCheck_app.py`** from the release — it embeds every module and
-> data file and runs on its own (`python3 CTCannabisPoliticalCheck_app.py --offline`).
-> Developers can still use the package below; `python3 build_single_file.py`
-> regenerates the standalone file.
+> **Journalistic investigative tool. LIVE ONLY — it NEVER uses synthetic, demo, or
+> fabricated data.** Every name, relationship, donation, vote, and tier comes from a
+> real public record and is shown with its source. There is no offline/demo report
+> mode; the distributed program contains no synthetic fixtures.
+
+> **One program, one file.** Grab **`CTCannabisPoliticalCheck_app.py`** from the
+> release — it embeds every module and the real config/data files and runs on its own
+> (`python3 CTCannabisPoliticalCheck_app.py`). Developers can use the package below;
+> `python3 build_single_file.py` regenerates the standalone file. (The test suite uses
+> fixtures purely to validate the matching/classification engine — that scaffolding is
+> never bundled and never produces a report.)
 
 **`CTCannabisPoliticalCheck`** — a reproducible Connecticut Cannabis Political
 Relationship Intelligence tool. It screens **every CT state legislator (current and
@@ -19,10 +25,15 @@ source-cited PDF**.
 > match was found in the queried sources — not proof of no involvement.**
 
 ```bash
-python3 CTCannabisPoliticalCheck.py            # LIVE (data.ct.gov + web)
-python3 CTCannabisPoliticalCheck.py --offline  # offline demo (deterministic, fast)
-streamlit run streamlit_app.py                 # web UI
+python3 CTCannabisPoliticalCheck.py   # LIVE only — real public sources, never synthetic data
+streamlit run streamlit_app.py        # web UI
 ```
+
+## New in 1.2
+
+- **LIVE ONLY — no synthetic data, ever.** Removed the offline/demo report mode. The
+  program runs exclusively against real public sources; the distributed file contains
+  no synthetic fixtures. (Test fixtures remain only as engine-validation scaffolding.)
 
 ## New in 1.1
 

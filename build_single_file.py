@@ -40,6 +40,9 @@ def collect_modules() -> tuple[dict[str, str], set[str]]:
 
 
 def collect_data() -> dict[str, str]:
+    # REAL data only. config/sources + the curated, publicly-sourced municipal files.
+    # The synthetic test fixtures (tests/fixtures/*) are DELIBERATELY NOT bundled — the
+    # distributed program is live-only and must never carry or use synthetic data.
     data: dict[str, str] = {}
     for rel in ["config.yaml", "sources.yaml",
                 "data/known_municipal_findings.json",
@@ -47,8 +50,6 @@ def collect_data() -> dict[str, str]:
         fp = ROOT / rel
         if fp.exists():
             data[rel] = fp.read_text(encoding="utf-8")
-    for fx in sorted((ROOT / "tests" / "fixtures").glob("*.json")):
-        data[f"tests/fixtures/{fx.name}"] = fx.read_text(encoding="utf-8")
     return data
 
 
@@ -58,9 +59,8 @@ HEADER = '''#!/usr/bin/env python3
 One program, one file. Connecticut Legislature & Municipal Cannabis Conflict-of-
 Interest Screening. A screening aid for humans, NOT an automated accusation engine.
 
-Run:
-    python3 CTCannabisPoliticalCheck_app.py            # LIVE (data.ct.gov + web)
-    python3 CTCannabisPoliticalCheck_app.py --offline  # offline demo (deterministic)
+Run (LIVE ONLY — never uses synthetic/demo data):
+    python3 CTCannabisPoliticalCheck_app.py            # real public sources
 
 Every embedded module/data file is base64-packed below; a meta-path loader serves
 the `src.*` package and the data files are materialized into ~/.ct_cannabis_check
@@ -110,8 +110,8 @@ class _EmbeddedLoader(importlib.abc.MetaPathFinder, importlib.abc.Loader):
         name = module.__name__
         # Point __file__ at HOME/<path>.py so config.py's
         # ROOT = Path(__file__).resolve().parent.parent resolves to HOME, and every
-        # ROOT-relative read (config.yaml, data/, tests/fixtures/, out/, reports/)
-        # lands under the materialized home dir.
+        # ROOT-relative read (config.yaml, data/, out/, reports/) lands under the
+        # materialized home dir. (No synthetic fixtures are bundled — live only.)
         rel = Path(*name.split(".")) / ("__init__.py" if name in _PKGS else "")
         if name not in _PKGS:
             rel = Path(*name.split(".")).with_suffix(".py")
@@ -139,21 +139,20 @@ def main(argv=None) -> int:
 
     ap = argparse.ArgumentParser(prog="CTCannabisPoliticalCheck",
                                  description=f"{DISPLAY_NAME} v{app_version()}")
-    ap.add_argument("--offline", action="store_true",
-                    help="use the bundled fixture corpus (zero live requests)")
     ap.add_argument("--refresh-cache", action="store_true")
     ap.add_argument("--no-municipal", action="store_true")
     ap.add_argument("--no-downloads", action="store_true")
     ap.add_argument("--since-year", type=int, default=None)
     args = ap.parse_args(argv)
 
+    # LIVE ONLY. Journalistic investigative tool — real public records, never synthetic
+    # data. No offline/fixture mode (the synthetic fixtures are not even bundled).
     cfg = config()
-    offline = args.offline or cfg["run"].get("offline_default", False)
-    _log(f"{DISPLAY_NAME} v{app_version()} — "
-         f"{'OFFLINE (fixtures)' if offline else 'LIVE (data.ct.gov)'}  [single-file]")
+    _log(f"{DISPLAY_NAME} v{app_version()} — LIVE (real sources only; never synthetic) "
+         f"[single-file]")
     _log(f"working home: {HOME}")
 
-    result = Pipeline(offline=offline, refresh=args.refresh_cache,
+    result = Pipeline(offline=False, refresh=args.refresh_cache,
                       since_year=args.since_year).run()
     _log(f"legislators: {result.counts['legislators']:,} · cross-referenced "
          f"{result.counts.get('cross_referenced', 0)} · cannabis people "
@@ -165,7 +164,7 @@ def main(argv=None) -> int:
 
     municipal = None
     if not args.no_municipal:
-        municipal = MunicipalPipeline(offline=offline,
+        municipal = MunicipalPipeline(offline=False,
                                       refresh=args.refresh_cache).run()
 
     rep = finalize_report(result, cfg, municipal=municipal,

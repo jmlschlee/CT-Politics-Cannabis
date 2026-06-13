@@ -8,10 +8,9 @@ official public sources, attaches a source + confidence tier to every potential
 link, and routes anything touching a family member or below CONFIRMED to a human
 review queue.
 
-Run it:
+Run it (LIVE ONLY — this tool never uses synthetic/demo data):
 
-    python3 CTCannabisPoliticalCheck.py            # LIVE run against data.ct.gov
-    python3 CTCannabisPoliticalCheck.py --offline  # offline demo (bundled fixtures)
+    python3 CTCannabisPoliticalCheck.py            # LIVE run against real public sources
     python3 CTCannabisPoliticalCheck.py --no-municipal --no-downloads
 
 Each run writes a NEW, never-overwritten PDF:
@@ -50,8 +49,6 @@ def _log(msg: str) -> None:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(
         prog="CTCannabisPoliticalCheck", description=DISPLAY_NAME)
-    ap.add_argument("--offline", action="store_true",
-                    help="use the bundled fixture corpus (zero live requests)")
     ap.add_argument("--refresh-cache", action="store_true",
                     help="re-pull live sources instead of using the cache")
     ap.add_argument("--no-municipal", action="store_true",
@@ -62,11 +59,13 @@ def main(argv=None) -> int:
                     help="cannabis-era cutoff for cross-referencing (default 2012)")
     args = ap.parse_args(argv)
 
+    # LIVE ONLY. This is a journalistic investigative tool: it cross-references real
+    # CT officials against real public records and NEVER fabricates or uses synthetic/
+    # demo data. There is no offline/fixture mode for report generation.
     cfg = config()
-    offline = args.offline or cfg["run"].get("offline_default", False)
-    _log(f"{DISPLAY_NAME} — {'OFFLINE (fixtures)' if offline else 'LIVE (data.ct.gov)'}")
+    _log(f"{DISPLAY_NAME} — LIVE (real public sources only; never synthetic data)")
 
-    result = Pipeline(offline=offline, refresh=args.refresh_cache,
+    result = Pipeline(offline=False, refresh=args.refresh_cache,
                       since_year=args.since_year).run()
     _log(f"legislators in roster: {result.counts['legislators']:,} "
          f"({result.counts['current']} current / {result.counts['former']} former)")
@@ -85,7 +84,7 @@ def main(argv=None) -> int:
 
     municipal = None
     if not args.no_municipal:
-        municipal = MunicipalPipeline(offline=offline,
+        municipal = MunicipalPipeline(offline=False,
                                       refresh=args.refresh_cache).run()
         m = municipal.counts
         _log(f"municipal: {m['host_towns']} host towns · {m['facilities']} "
