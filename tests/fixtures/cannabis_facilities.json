@@ -1,0 +1,14 @@
+[
+  {
+    "facility_id": "fac-curaleaf-simsbury",
+    "operator_name": "Curaleaf",
+    "town": "Simsbury",
+    "address": "100 Grist Mill Road, Simsbury",
+    "license_type": "producer (cultivation/production)",
+    "approval_body": "Planning & Zoning Commission",
+    "approval_vote": "4-2",
+    "approval_date": "2014-01-01",
+    "approval_outcome": "approved",
+    "source_url": "https://data.ct.gov/cannabis-facilities/curaleaf-simsbury"
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "person_id": "leg-aldenberry",
+    "full_name": "Marcus J. Aldenberry",
+    "chamber": "House", "district": "10", "party": "D",
+    "hometown": "Glastonbury", "first_elected": 2018,
+    "occupation": "Small business owner",
+    "committees": ["General Law", "Appropriations"],
+    "source_url": "https://www.cga.ct.gov/asp/CGABillStatus/HD10"
+  },
+  {
+    "person_id": "leg-doe",
+    "full_name": "Jane Doe",
+    "chamber": "Senate", "district": "5", "party": "D",
+    "hometown": "West Hartford", "first_elected": 2016,
+    "occupation": "Attorney",
+    "committees": ["Judiciary", "Finance"],
+    "source_url": "https://www.cga.ct.gov/asp/CGABillStatus/SD5"
+  },
+  {
+    "person_id": "leg-whitfield",
+    "full_name": "Karen Whitfield",
+    "chamber": "House", "district": "22", "party": "R",
+    "hometown": "Rocky Hill", "first_elected": 2020,
+    "occupation": "Nurse",
+    "committees": ["Public Health"],
+    "source_url": "https://www.cga.ct.gov/asp/CGABillStatus/HD22"
+  },
+  {
+    "person_id": "leg-hartley",
+    "full_name": "Paul Hartley",
+    "chamber": "Senate", "district": "9", "party": "R",
+    "hometown": "Milford", "first_elected": 2014,
+    "occupation": "Insurance agent",
+    "committees": ["General Law"],
+    "source_url": "https://www.cga.ct.gov/asp/CGABillStatus/SD9"
+  },
+  {
+    "person_id": "leg-candelora",
+    "full_name": "Vincent Candelora",
+    "chamber": "House", "district": "86", "party": "R",
+    "hometown": "North Branford", "first_elected": 2006,
+    "occupation": "Attorney",
+    "committees": ["Executive and Legislative Nominations"],
+    "source_url": "https://www.cga.ct.gov/asp/CGABillStatus/HD86"
+  },
+  {
+    "person_id": "leg-candelaria",
+    "full_name": "Juan Candelaria",
+    "chamber": "House", "district": "95", "party": "D",
+    "hometown": "New Haven", "first_elected": 2002,
+    "occupation": "Community advocate",
+    "committees": ["Housing"],
+    "source_url": "https://www.cga.ct.gov/asp/CGABillStatus/HD95"
+  },
+  {
+    "person_id": "leg-brown",
+    "full_name": "Michael Brown",
+    "chamber": "House", "district": "40", "party": "D",
+    "hometown": "Groton", "first_elected": 2012,
+    "occupation": "Teacher",
+    "committees": ["Education"],
+    "source_url": "https://www.cga.ct.gov/asp/CGABillStatus/HD40"
+  }
+]

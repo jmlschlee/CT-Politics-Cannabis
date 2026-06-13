@@ -1,0 +1,10 @@
+[
+  {
+    "firm_id": "firm-pullman-comley",
+    "name": "Pullman & Comley",
+    "reps_cannabis": true,
+    "cannabis_clients": ["Advanced Grow Labs", "Budr"],
+    "town_counsel_for": [],
+    "source_url": "https://www.pullcom.com/practices/cannabis"
+  }
+]

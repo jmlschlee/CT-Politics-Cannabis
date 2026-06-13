@@ -1,0 +1,24 @@
+[
+  {
+    "link_id": "fl-glassman",
+    "official_name": "Mary Glassman",
+    "relative_name": "Andrew Glassman",
+    "relationship": "spouse",
+    "relative_role": "attorney; chairs the Cannabis/CBD/Hemp practice; CT Cannabis Chamber 2022 Attorney of the Year",
+    "relative_employer": "Pullman & Comley",
+    "source_type": "campaign_bio (names spouse 'Andy')",
+    "is_primary_source": true,
+    "source_url": "https://maryglassman.example.org/about/bio"
+  },
+  {
+    "link_id": "fl-sanchez-uncorroborated",
+    "official_name": "Robert Sanchez",
+    "relative_name": "Elena Sanchez",
+    "relationship": "(asserted) sibling",
+    "relative_role": "cannabis consultant",
+    "relative_employer": "Nutmeg Cannabis Advisors",
+    "source_type": "shared surname + town only (no primary source)",
+    "is_primary_source": false,
+    "source_url": "https://patch.com/connecticut/simsbury/some-blog-mention"
+  }
+]

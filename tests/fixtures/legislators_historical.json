@@ -1,0 +1,22 @@
+[
+  {
+    "person_id": "leg-folger-former",
+    "full_name": "Diane Folger",
+    "chamber": "House", "district": "33", "party": "D",
+    "hometown": "Old Saybrook", "first_elected": 2010,
+    "years_served": "2011-2019",
+    "occupation": "Realtor",
+    "committees": ["General Law", "Environment"],
+    "source_url": "https://www.cga.ct.gov/asp/menu/cgaapphome.asp?session=2019"
+  },
+  {
+    "person_id": "leg-okafor-former",
+    "full_name": "Samuel Okafor",
+    "chamber": "Senate", "district": "12", "party": "R",
+    "hometown": "Cheshire", "first_elected": 2008,
+    "years_served": "2009-2017",
+    "occupation": "Accountant",
+    "committees": ["Finance"],
+    "source_url": "https://www.cga.ct.gov/asp/menu/cgaapphome.asp?session=2017"
+  }
+]

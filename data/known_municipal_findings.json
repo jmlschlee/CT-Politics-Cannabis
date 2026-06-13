@@ -1,0 +1,22 @@
+[
+  {
+    "town": "Simsbury",
+    "official": "Mary Glassman",
+    "role": "First Selectman (2007–2014)",
+    "relation": "spouse",
+    "connected_person": "Andrew Glassman (husband)",
+    "cannabis_business": "Curaleaf (medical-marijuana production facility sited in Simsbury)",
+    "connection_type": "official_family_law_firm",
+    "tier": "CONFIRMED",
+    "appearance_concern": true,
+    "substantial_conflict": false,
+    "explanation": "Mary Glassman, then First Selectman of Simsbury, publicly supported the state's selection of Simsbury as one of four medical-marijuana production sites (Curaleaf). Her husband, Andrew Glassman, is an attorney at Pullman & Comley who CHAIRS the firm's Cannabis/CBD/Hemp practice and was the CT Cannabis Chamber's 2022 Attorney of the Year; Mary Glassman is also affiliated with the firm. APPEARANCE CONCERN, not a substantial conflict: the siting was decided by the state and the independent local zoning body, not by the First Selectman, and no direct monetary gain to her is shown. Whether her husband's firm represented THIS operator (Curaleaf) is not established and must NOT be asserted.",
+    "sources": [
+      "https://www.pullcom.com/people-andrewglassman",
+      "https://law.uconn.edu/2022/12/23/andrew-glassman-85-honored-by-the-ct-cannabis-chamber-of-commerce/",
+      "https://patch.com/connecticut/granby-eastgranby/simsbury-site-chosen-for-medical-marijuana-production-granby-eastgranby",
+      "https://en.everybodywiki.com/Mary_Glassman"
+    ],
+    "as_of": "2026-06-12"
+  }
+]

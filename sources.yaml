@@ -1,0 +1,295 @@
+# sources.yaml
+# Every external endpoint this pipeline touches, with the date its shape was
+# last confirmed by a human. Collectors MUST NOT hard-code URLs/dataset IDs in
+# logic — they read them from here and FAIL LOUDLY if the source's shape changed
+# (see src/collectors/base.py::SourceDriftError).
+#
+# `verified_on`  : last date a human visited the source and confirmed the schema.
+# `enabled`      : master toggle for the collector.
+# `allow_scrape` : may this source be hit with a browser? OFF by default; only
+#                  flip on for sources whose ToS/robots.txt permit it (see §6).
+# `kind`         : socrata | rest | html | scrape | fixture | manual
+#
+# IMPORTANT: dataset IDs below are PLACEHOLDERS. At build/refresh time, run
+#   `python -m src.cli verify-sources`
+# which visits each endpoint and refuses to proceed if the live shape no longer
+# matches what is recorded here. Update `verified_on` only after a human check.
+
+meta:
+  project: ct-cannabis-conflicts
+  contact: "REPLACE_WITH_PROJECT_CONTACT_EMAIL"   # goes in the User-Agent for any scrape
+  default_verified_on: "2026-06-12"
+
+# ---------------------------------------------------------------------------
+# 1. Legislator rosters (current + historical)
+# ---------------------------------------------------------------------------
+legislators_current:
+  enabled: true
+  allow_scrape: false
+  kind: socrata
+  verified_on: "2026-06-12"            # dataset id + columns confirmed live this date
+  live_status: bulk_api
+  base_url: "https://www.cga.ct.gov"
+  endpoints:
+    house_members: "https://www.cga.ct.gov/asp/menu/hlist.asp"
+    senate_members: "https://www.cga.ct.gov/asp/menu/slist.asp"
+  # CONFIRMED LIVE: data.ct.gov "Current and Historical Connecticut State
+  # Legislators" — one dataset holds BOTH current and historical members
+  # (16,493 rows back to 1915). This collector loads the FULL roster and computes
+  # is_former from years_served; legislators_historical is a no-op in live mode.
+  socrata:
+    domain: "data.ct.gov"
+    dataset_id: "h2b3-nyih"
+    columns: [last_name, first_name, middle_name_initial, suffix_prefix_honorifics,
+              town, chamber, political_affiliation, years_served, date_of_death]
+  current_year: 2026
+  current_within_years: 2             # max(years_served) >= year-2 => current
+  expected_fields: [last_name, first_name, town, chamber, political_affiliation, years_served]
+
+legislators_historical:
+  enabled: true
+  allow_scrape: false
+  kind: socrata
+  verified_on: "2026-06-12"
+  live_status: merged_into_current     # same dataset as legislators_current; live no-op
+  # The same h2b3-nyih dataset is the historical roster; loaded by legislators_current.
+  cga_session_index: "https://www.cga.ct.gov/asp/menu/cgaapphome.asp"
+  wikipedia:
+    house: "https://en.wikipedia.org/wiki/Connecticut_House_of_Representatives"
+    senate: "https://en.wikipedia.org/wiki/Connecticut_State_Senate"
+  socrata:
+    domain: "data.ct.gov"
+    dataset_id: "h2b3-nyih"
+  earliest_session_year: 2010
+  expected_fields: [last_name, first_name, town, chamber, years_served]
+
+# ---------------------------------------------------------------------------
+# 2. DCP cannabis licenses + INDIVIDUAL credentials (backer, key employee)
+#    NB: the individual-credential rosters are mandatory — a prior manual pass
+#    missed an active Key Employee credential by only checking business lists.
+# ---------------------------------------------------------------------------
+dcp_cannabis:
+  enabled: true
+  allow_scrape: false
+  kind: socrata
+  verified_on: "2026-06-12"
+  live_status: bulk_api_business_only   # establishments yes; INDIVIDUAL creds portal-only
+  # CONFIRMED LIVE: business-level cannabis licenses on data.ct.gov. The INDIVIDUAL
+  # backer / key-employee credentials are NOT on Open Data — they live in the
+  # eLicense roster export (scrape, off by default), so that layer is a flagged
+  # coverage gap in a bulk-only live run.
+  socrata:
+    domain: "data.ct.gov"
+    datasets:
+      cannabis_establishments: "vw4a-3bnz"   # type, license, business, city, street
+      cannabis_retail: "42yd-3x3d"           # type, business, dba, city, street
+      cannabis_backers: "PORTAL_ONLY_eLicense_roster"
+      cannabis_key_employees: "PORTAL_ONLY_eLicense_roster"
+  elicense_roster:
+    base_url: "https://www.elicense.ct.gov"
+    roster_path: "/Lookup/GenerateRoster.aspx"
+    credential_types:
+      - dispensary
+      - retailer
+      - cultivator
+      - micro-cultivator
+      - delivery
+      - transporter
+      - product-manufacturer
+      - cannabis-establishment-backer    # INDIVIDUAL credential
+      - cannabis-key-employee            # INDIVIDUAL credential — do not skip
+  expected_fields: [credential_holder, credential_type, business_name, status]
+
+# ---------------------------------------------------------------------------
+# 3. Campaign finance (donations)
+# ---------------------------------------------------------------------------
+campaign_finance:
+  enabled: true
+  allow_scrape: false
+  kind: socrata
+  verified_on: "2026-06-12"
+  socrata:
+    domain: "data.ct.gov"
+    datasets:
+      receipts: "PLACEHOLDER_seec_receipts"     # contributor, employer, occupation, amount, date, committee
+  seec_ecris:
+    base_url: "https://seec.ct.gov"
+    portal: "https://seec.ct.gov/eCRIS/eCRISlanding"
+  followthemoney:
+    api_base: "https://api.followthemoney.org"
+    state: "CT"
+    note: "cross-check only; requires API key in config.yaml->secrets"
+  expected_fields: [contributor_name, employer, occupation, amount, date, recipient_committee]
+
+# ---------------------------------------------------------------------------
+# 4. Lobbyist registrations (communicators + clients)
+# ---------------------------------------------------------------------------
+lobbyists:
+  enabled: true
+  allow_scrape: false
+  kind: html
+  verified_on: "2026-06-12"
+  office_of_state_ethics:
+    base_url: "https://www.ethics.ct.gov"
+    lobbyist_search: "https://www.oseapps.ct.gov/NewLobbyist/PublicReports/LobbyistSearch.aspx"
+  socrata:
+    domain: "data.ct.gov"
+    dataset_id: "PLACEHOLDER_lobbyists"
+  # Seed list of cannabis-industry client name fragments (extend over time):
+  cannabis_client_markers:
+    - "cannabis"
+    - "marijuana"
+    - "cannabis chamber"
+    - "marijuana policy project"
+    - "dispensary"
+    - "cultivator"
+  expected_fields: [communicator_name, client_name, registration_year]
+
+# ---------------------------------------------------------------------------
+# 5. Statements of Financial Interests (spouse/family employer) — SENSITIVE
+#    This is the ONLY source that may confirm a family/spouse cannabis tie.
+#    Surname/town coincidence is a lead, never a finding (see §6).
+# ---------------------------------------------------------------------------
+ethics_sfi:
+  enabled: true
+  allow_scrape: false
+  kind: manual          # often FOIA/portal; treated as human-fed unless a feed exists
+  verified_on: "2026-06-12"
+  office_of_state_ethics:
+    base_url: "https://www.ethics.ct.gov"
+    sfi_search: "https://www.oseapps.ct.gov/NewLobbyist/PublicReports/SFISearch.aspx"
+  # Only these cannabis-relevant fields are ever stored from an SFI filing:
+  store_fields: [legislator_name, filing_year, spouse_employer, associated_business]
+  privacy_note: "Never store home address, phone, DOB, or non-cannabis family detail."
+
+# ---------------------------------------------------------------------------
+# 6. Business registry — CT Secretary of the State (LLC screen / "CONCORD")
+# ---------------------------------------------------------------------------
+business_registry:
+  enabled: true
+  allow_scrape: false        # interactive UI; keep OFF until ToS/robots reviewed
+  kind: scrape
+  verified_on: "2026-06-12"
+  business_search:
+    base_url: "https://business.ct.gov"
+    search_ui: "https://service.ct.gov/business/s/onlinebusinesssearch"
+  socrata:
+    domain: "data.ct.gov"
+    dataset_id: "PLACEHOLDER_business_master"   # bulk file STRONGLY preferred
+  expected_fields: [entity_name, entity_type, status, principal_name, principal_role]
+
+# ===========================================================================
+# MUNICIPAL / TOWN LAYER (extension module)
+# Targeting is driven by which towns actually HOST a cannabis facility — do NOT
+# blind-screen all ~169 towns. Throttle municipal sites HARD (small servers).
+# ===========================================================================
+
+# 7. Cannabis facility -> host-town map (the targeting layer)
+cannabis_facilities:
+  enabled: true
+  allow_scrape: false
+  kind: socrata
+  verified_on: "2026-06-12"
+  live_status: bulk_api
+  # CONFIRMED LIVE: host towns derived from cannabis-establishment + retail
+  # addresses (city field). Zoning-approval body/vote is NOT on Open Data — that
+  # comes from per-town meeting minutes (portal/scrape), a flagged coverage gap.
+  socrata:
+    domain: "data.ct.gov"
+    datasets:
+      establishments: "vw4a-3bnz"   # type, license, business, street_address, city
+      retail: "42yd-3x3d"           # type, business, dba, street, city
+  expected_fields: [business, city, street, type]
+
+# 8. Municipal officials (host-towns first), current + former
+municipal_officials:
+  enabled: true
+  allow_scrape: false
+  kind: html
+  verified_on: "2026-06-12"
+  # Per-town official rosters — town sites + vendors (BoardDocs/CivicClerk/Granicus).
+  per_town_roster: "CONFIGURE_PER_TOWN"     # map of town -> roster URL
+  bodies_of_interest:
+    - "First Selectman"
+    - "Board of Selectmen"
+    - "Town Council"
+    - "Planning & Zoning Commission"
+    - "Zoning Board of Appeals"
+    - "Economic Development Commission"
+    - "Board of Finance"
+  expected_fields: [full_name, town, body, role, term]
+
+# 8b. Cannabis zoning status per town (Approved / Prohibited / Moratorium) — the
+#     municipal cannabis policy-action layer. CONFIRMED LIVE on data.ct.gov.
+cannabis_zoning:
+  enabled: true
+  allow_scrape: false
+  kind: socrata
+  verified_on: "2026-06-12"
+  live_status: bulk_api
+  socrata:
+    domain: "data.ct.gov"
+    dataset_id: "khc7-gd9u"     # town, state, status
+  expected_fields: [town, status]
+
+# 9. Municipal meeting records (P&Z / ZBA / Selectmen) — votes + recusals
+meeting_minutes:
+  enabled: true
+  allow_scrape: false        # respect each town's ToS/robots; throttle hard
+  kind: html
+  verified_on: "2026-06-12"
+  vendors:                   # common municipal doc platforms
+    boarddocs: "https://go.boarddocs.com"
+    civicclerk: "https://*.civicclerk.com"
+    granicus_legistar: "https://*.legistar.com"
+  expected_fields: [town, body, date, agenda_item, vote, recusals]
+
+# 10. Local land / assessor records (parcel ownership / landlord <-> official)
+land_records:
+  enabled: true
+  allow_scrape: false
+  kind: html
+  verified_on: "2026-06-12"
+  assessor_vendors:
+    vision: "https://gis.vgsi.com"
+    qds: "https://*.qds.com"
+  ct_land_records:
+    cottsystems: "https://ctlandrecords.com"
+  privacy_note: "Store parcel owner-of-record + the official tie ONLY; never a home address."
+  expected_fields: [parcel_address, owner_of_record, town]
+
+# 11. Town counsel / law-firm cannabis-client cross-reference
+law_firms:
+  enabled: true
+  allow_scrape: false
+  kind: html
+  verified_on: "2026-06-12"
+  # Build the cannabis-client law-firm list from attorney directories + firm
+  # experience/client pages + Cannabis Chamber honorees.
+  directories:
+    - "https://www.ctcannabischamber.org"
+  cannabis_practice_markers: ["cannabis", "hemp", "cbd", "marijuana"]
+  expected_fields: [firm_name, cannabis_clients, town_counsel_for]
+
+# 12. Local campaign finance (municipal candidates) — operator/owner/lobbyist donations
+local_campaign_finance:
+  enabled: true
+  allow_scrape: false
+  kind: html
+  verified_on: "2026-06-12"
+  town_clerk_filings: "CONFIGURE_PER_TOWN"
+  seec_municipal: "https://seec.ct.gov"
+  expected_fields: [contributor_name, employer, amount, date, recipient_committee, town]
+
+# 13. Local news / municipal press (siting coverage, statements, recusals, family)
+local_news:
+  enabled: true
+  allow_scrape: false
+  kind: html
+  verified_on: "2026-06-12"
+  outlets:
+    - "https://patch.com"
+    - "https://www.ctinsider.com"
+    - "https://ctmirror.org"
+  note: "Corroboration + family-relationship leads ONLY; a news mention is a lead, not a finding."
+  expected_fields: [town, headline, url, published_date]

@@ -1,0 +1,12 @@
+[
+  {
+    "entity_id": "ent-flamig-farm",
+    "name": "Flamig Farm",
+    "town": "Simsbury",
+    "kind": "waste/compost",
+    "documented_operator_transactions": [],
+    "policy_excludes_cannabis": true,
+    "policy_note": "Compost yard accepts clean organic/yard waste only; bars chemicals.",
+    "source_url": "https://www.flamigfarm.example.org/compost"
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "entity_id": "biz-greenleaf",
+    "entity_name": "Green Leaf Holdings LLC",
+    "entity_type": "LLC", "status": "Active",
+    "purpose": "Cannabis cultivation and retail",
+    "is_cannabis": true,
+    "source_url": "https://service.ct.gov/business/s/onlinebusinesssearch?id=greenleaf",
+    "principals": [
+      {"name": "Vincent Candelora", "role": "member"}
+    ]
+  },
+  {
+    "entity_id": "biz-mapleco",
+    "entity_name": "Maple Street Bakery LLC",
+    "entity_type": "LLC", "status": "Active",
+    "purpose": "Retail bakery",
+    "is_cannabis": false,
+    "source_url": "https://service.ct.gov/business/s/onlinebusinesssearch?id=mapleco",
+    "principals": [
+      {"name": "Jane Doe", "role": "member"}
+    ]
+  }
+]

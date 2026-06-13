@@ -1,0 +1,82 @@
+# config.yaml — runtime behavior (NOT endpoints; those live in sources.yaml)
+
+run:
+  # CT cannabis era: MEDICAL legalized 2012 (PA 12-55), ADULT-USE 2021 (RERACA).
+  # A legislator who left office before 2012 cannot have a cannabis conflict, so
+  # cross-referencing is scoped to members serving 2012+ (the full historical
+  # roster is still collected/stored for completeness, just not screened).
+  default_since_year: 2012
+  cannabis_medical_year: 2012
+  cannabis_adult_use_year: 2021
+  offline_default: false          # `--offline` forces fixture/cache-only, zero live hits
+
+cache:
+  dir: "data/cache"
+  # Idempotency: a re-run with a warm cache performs ZERO live requests.
+  ttl_days: 30                    # raw responses older than this are re-fetched on refresh
+  respect_on_offline: true
+
+http:
+  # Politeness — applied to EVERY live request, scrape or API.
+  per_host_delay_seconds: 2.0
+  timeout_seconds: 30
+  max_retries: 4
+  user_agent_template: "ct-cannabis-conflicts/0.1 (public-interest research; contact={contact})"
+
+scrape:
+  # Browser automation is OFF unless a source's allow_scrape is true AND this is true.
+  globally_enabled: false
+  headless: true
+  per_host_delay_seconds: 5.0     # extra-slow for interactive portals
+
+matching:
+  # rapidfuzz thresholds (token_sort_ratio, 0-100) for the confidence tiers.
+  block_on: surname               # candidate generation key
+  thresholds:
+    name_strong: 90               # full-name similarity to be considered a strong name match
+    name_weak: 82                 # below name_weak -> not a candidate at all
+  tiers:
+    confirmed_min_name: 90        # CONFIRMED also REQUIRES >=1 independent disambiguator
+    probable_min_name: 90         # strong name, weak/absent corroboration
+    review_min_name: 82           # name-only / common-surname collision
+  # Surnames common enough in the CT roster that a name-only match must never
+  # auto-promote above REVIEW without a disambiguator. Extend from the live roster.
+  high_collision_surnames:
+    - smith
+    - brown
+    - johnson
+    - hall
+    - sanchez
+    - williams
+    - davis
+    - miller
+    - garcia
+    - rodriguez
+  # Near-collision pairs that must NEVER be auto-merged.
+  never_merge_pairs:
+    - ["candelaria", "candelora"]
+
+privacy:
+  # Hard deny-list of fields the pipeline will refuse to store, for anyone.
+  forbidden_fields: [home_address, street_address, phone, mobile, dob, date_of_birth, ssn]
+  family_store_only: [relationship, cannabis_relevant_fact, source_url]
+  use_broker_related_to: false    # data-broker "related-to" inferences are NEVER evidence
+
+legal:
+  # Citations the report states plainly (see src/analyze/classify.py).
+  cgs_substantial_conflict: "CGS §1-84 / §1-85"
+  cgs_class_exception: "CGS §1-85"
+  reraca: "Conn. Gen. Stat. §21a-421dd"
+  former_legislator_cooloff_years: 2
+
+secrets:
+  followthemoney_api_key: ""      # optional; leave blank to skip FTM cross-check
+
+output:
+  dir: "out"
+  db_file: "out/conflicts.duckdb"
+  tracker_xlsx: "out/tracker.xlsx"
+  findings_md: "out/findings.md"
+  findings_pdf: "out/findings.pdf"
+  review_queue_csv: "out/review_queue.csv"
+  municipal_review_queue_csv: "out/municipal_review_queue.csv"

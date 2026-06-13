@@ -1,0 +1,43 @@
+{
+  "entities": [
+    {
+      "entity_id": "dcp-ent-nutmeg",
+      "name": "Nutmeg Dispensary LLC",
+      "entity_type": "dispensary", "license_type": "dispensary-facility",
+      "status": "Active",
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=dispensary"
+    },
+    {
+      "entity_id": "dcp-ent-greenvale",
+      "name": "Green Vale Micro-Cultivation LLC",
+      "entity_type": "micro-cultivator", "license_type": "micro-cultivator",
+      "status": "Active",
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=micro-cultivator"
+    },
+    {
+      "entity_id": "dcp-ent-coastal",
+      "name": "Coastal Cultivators LLC",
+      "entity_type": "cultivator", "license_type": "cultivator",
+      "status": "Active",
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=cultivator"
+    }
+  ],
+  "persons": [
+    {
+      "cp_id": "dcp-cred-aldenberry-ke",
+      "full_name": "Marcus J. Aldenberry",
+      "role": "key_employee",
+      "credential_type": "cannabis-key-employee",
+      "entity_name": "Green Vale Micro-Cultivation LLC",
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=cannabis-key-employee"
+    },
+    {
+      "cp_id": "dcp-cred-folger-backer",
+      "full_name": "Diane Folger",
+      "role": "backer",
+      "credential_type": "cannabis-establishment-backer",
+      "entity_name": "Coastal Cultivators LLC",
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=cannabis-establishment-backer"
+    }
+  ]
+}

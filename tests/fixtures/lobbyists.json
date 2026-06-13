@@ -1,0 +1,18 @@
+[
+  {
+    "lobbyist_id": "lob-whitfield",
+    "communicator_name": "Thomas Whitfield",
+    "client_name": "CT Cannabis Chamber of Commerce",
+    "registration_year": 2023,
+    "hometown": "Rocky Hill",
+    "source_url": "https://www.oseapps.ct.gov/NewLobbyist/PublicReports/LobbyistSearch.aspx?id=whitfield"
+  },
+  {
+    "lobbyist_id": "lob-generic",
+    "communicator_name": "Alice Pemberton",
+    "client_name": "CT Hospital Association",
+    "registration_year": 2022,
+    "hometown": "Hartford",
+    "source_url": "https://www.oseapps.ct.gov/NewLobbyist/PublicReports/LobbyistSearch.aspx?id=pemberton"
+  }
+]

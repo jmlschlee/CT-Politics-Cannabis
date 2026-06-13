@@ -1,0 +1,33 @@
+[
+  {
+    "person_id": "off-glassman-mary",
+    "full_name": "Mary Glassman",
+    "town": "Simsbury",
+    "body": "First Selectman",
+    "role": "First Selectman",
+    "term_start": 2007, "term_end": 2015,
+    "is_former": true,
+    "in_office_at": ["fac-curaleaf-simsbury"],
+    "source_url": "https://www.simsbury-ct.gov/first-selectman/history"
+  },
+  {
+    "person_id": "off-pz-chair",
+    "full_name": "Gerald Post",
+    "town": "Simsbury",
+    "body": "Planning & Zoning Commission",
+    "role": "Commission Chair",
+    "term_start": 2012, "term_end": 2016,
+    "in_office_at": ["fac-curaleaf-simsbury"],
+    "source_url": "https://www.simsbury-ct.gov/planning-zoning/members"
+  },
+  {
+    "person_id": "off-sanchez-robert",
+    "full_name": "Robert Sanchez",
+    "town": "Simsbury",
+    "body": "Planning & Zoning Commission",
+    "role": "Commissioner",
+    "term_start": 2012, "term_end": 2016,
+    "in_office_at": ["fac-curaleaf-simsbury"],
+    "source_url": "https://www.simsbury-ct.gov/planning-zoning/members"
+  }
+]

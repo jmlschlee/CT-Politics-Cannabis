@@ -1,0 +1,56 @@
+{
+  "_README": "CT municipal-law firms that maintain a documented CANNABIS practice. These firms also frequently serve as town counsel/corporation counsel for CT municipalities — the Glassman/Pullman & Comley/Simsbury case is the worked example. Each firm entry is SOURCED to the firm's own cannabis-practice page. 'towns_advised' lists ONLY town-counsel assignments we can source; it is intentionally sparse (we do NOT fabricate which firm advises which town). The live municipal pass web-discovers a host town's counsel and matches it against these firms.",
+  "firms": [
+    {
+      "firm": "Pullman & Comley LLC",
+      "cannabis_practice": "Cannabis, CBD & Hemp practice group",
+      "cannabis_lead": "Andrew Glassman (chair; CT Cannabis Chamber 2022 Attorney of the Year)",
+      "is_town_counsel": true,
+      "towns_advised": ["Simsbury"],
+      "sources": [
+        "https://www.pullcom.com/practices-cannabis",
+        "https://www.pullcom.com/people-andrewglassman"
+      ]
+    },
+    {
+      "firm": "Murtha Cullina LLP",
+      "cannabis_practice": "Cannabis Law practice",
+      "cannabis_lead": "",
+      "is_town_counsel": true,
+      "towns_advised": [],
+      "sources": ["https://www.murthalaw.com/practices/cannabis-law/"]
+    },
+    {
+      "firm": "Robinson & Cole LLP",
+      "cannabis_practice": "Cannabis Law team",
+      "cannabis_lead": "",
+      "is_town_counsel": true,
+      "towns_advised": [],
+      "sources": ["https://www.rc.com/practices/CannabisLaw/index.cfm"]
+    },
+    {
+      "firm": "Shipman & Goodwin LLP",
+      "cannabis_practice": "Cannabis industry practice",
+      "cannabis_lead": "",
+      "is_town_counsel": true,
+      "towns_advised": [],
+      "sources": ["https://www.shipmangoodwin.com/industries/cannabis.html"]
+    },
+    {
+      "firm": "Halloran Sage",
+      "cannabis_practice": "Cannabis & Hemp practice",
+      "cannabis_lead": "",
+      "is_town_counsel": true,
+      "towns_advised": [],
+      "sources": ["https://www.halloransage.com/"]
+    },
+    {
+      "firm": "Updike, Kelly & Spellacy, P.C.",
+      "cannabis_practice": "Cannabis law representation",
+      "cannabis_lead": "",
+      "is_town_counsel": true,
+      "towns_advised": [],
+      "sources": ["https://www.uks.com/"]
+    }
+  ]
+}

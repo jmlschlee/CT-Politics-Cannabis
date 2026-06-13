@@ -1,0 +1,20 @@
+# Generated scratch outputs and cached raw responses are never committed.
+data/cache/
+out/
+*.duckdb
+
+# Numbered reports are PRESERVED (never overwritten). Keep the registry; the bulky
+# PDFs themselves are local artifacts.
+reports/*.pdf
+!reports/registry.json
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Secrets / credentials must never be committed.
+*.env
+secrets.*

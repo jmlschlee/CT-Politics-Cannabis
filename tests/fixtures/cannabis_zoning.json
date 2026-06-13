@@ -1,0 +1,5 @@
+[
+  {"town": "Simsbury", "status": "Approved", "source_url": "https://data.ct.gov/d/khc7-gd9u"},
+  {"town": "Avon", "status": "Moratorium", "source_url": "https://data.ct.gov/d/khc7-gd9u"},
+  {"town": "Canton", "status": "Prohibited", "source_url": "https://data.ct.gov/d/khc7-gd9u"}
+]

@@ -1,0 +1,285 @@
+{
+  "next": 29,
+  "history": [
+    {
+      "number": 1,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_1.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_1.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 2,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_2.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_2.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 3,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_3.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_3.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 4,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_4.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_4.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 5,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_5.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_5.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 6,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_6.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_6.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 7,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_7.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_7.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 8,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_8.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_8.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 9,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_9.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_9.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 10,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_10.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_10.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 0
+    },
+    {
+      "number": 11,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_11.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_11.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 0
+    },
+    {
+      "number": 12,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_12.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_12.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 13,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_13.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_13.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 0
+    },
+    {
+      "number": 14,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_14.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_14.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 15,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_15.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_15.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 16,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_16.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_16.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 17,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_17.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_17.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 18,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_18.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_18.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 19,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_19.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_19.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 20,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_20.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_20.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 21,
+      "date": "2026-06-12",
+      "mode": "LIVE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_21.pdf",
+      "downloads_pdf": "/Users/josiahschlee/Downloads/CTCannabisPoliticalCheck_21.pdf",
+      "legislators": 16470,
+      "cross_referenced": 447,
+      "host_towns": 53
+    },
+    {
+      "number": 22,
+      "date": "2026-06-12",
+      "mode": "OFFLINE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_22.pdf",
+      "downloads_pdf": null,
+      "legislators": 9,
+      "cross_referenced": 9,
+      "host_towns": 1
+    },
+    {
+      "number": 23,
+      "date": "2026-06-12",
+      "mode": "OFFLINE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_23.pdf",
+      "downloads_pdf": null,
+      "legislators": 9,
+      "cross_referenced": 9,
+      "host_towns": 1
+    },
+    {
+      "number": 24,
+      "date": "2026-06-12",
+      "mode": "OFFLINE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_24.pdf",
+      "downloads_pdf": null,
+      "legislators": 9,
+      "cross_referenced": 9,
+      "host_towns": 1
+    },
+    {
+      "number": 25,
+      "date": "2026-06-12",
+      "mode": "OFFLINE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_25.pdf",
+      "downloads_pdf": null,
+      "legislators": 9,
+      "cross_referenced": 9,
+      "host_towns": 1
+    },
+    {
+      "number": 26,
+      "date": "2026-06-12",
+      "mode": "OFFLINE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_26.pdf",
+      "downloads_pdf": null,
+      "legislators": 9,
+      "cross_referenced": 9,
+      "host_towns": 1
+    },
+    {
+      "number": 27,
+      "date": "2026-06-12",
+      "mode": "OFFLINE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_27.pdf",
+      "downloads_pdf": null,
+      "legislators": 9,
+      "cross_referenced": 9,
+      "host_towns": 1
+    },
+    {
+      "number": 28,
+      "date": "2026-06-12",
+      "mode": "OFFLINE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_28.pdf",
+      "downloads_pdf": null,
+      "legislators": 9,
+      "cross_referenced": 9,
+      "host_towns": 1
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[
+  {"first_name": "Nikole", "last_name": "Burnes",
+   "organization_name": "CT Cannabis Chamber of Commerce", "city": "Rocky Hill",
+   "register_date": "2025-01-28T00:00:00.000", "member_type_type": "In-House"},
+  {"first_name": "Jennifer", "last_name": "Fell",
+   "organization_name": "CT Cannabis Chamber of Commerce", "city": "Rocky Hill",
+   "register_date": "2025-01-30T00:00:00.000", "member_type_type": "In-House"},
+  {"first_name": "Derrick", "last_name": "Gibbs",
+   "organization_name": "Budr Cannabis", "city": "West Hartford",
+   "register_date": "2025-02-11T00:00:00.000", "member_type_type": "In-House"},
+  {"first_name": "Carl", "last_name": "Tirella",
+   "organization_name": "Budr Cannabis", "city": "West Hartford",
+   "register_date": "2025-02-11T00:00:00.000", "member_type_type": "In-House"},
+  {"first_name": "Vincent", "last_name": "Candelora",
+   "organization_name": "Curaleaf", "city": "North Branford",
+   "register_date": "2025-03-04T00:00:00.000", "member_type_type": "Bus Org Member"}
+]

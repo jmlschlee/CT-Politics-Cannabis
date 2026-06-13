@@ -1,0 +1,20 @@
+[
+  {
+    "member_name": "Jane Doe",
+    "chamber": "Senate",
+    "date": "2023-05-18",
+    "subject": "S.B. 1201 An Act Concerning Cannabis Establishment Licensing",
+    "text": "Senator Doe rose to declare a potential conflict of interest and recused herself from the vote on the cannabis licensing amendment.",
+    "source_name": "Senate Journal",
+    "source_url": "https://www.cga.ct.gov/2023/jdata/sj/2023SJ-00518.htm"
+  },
+  {
+    "member_name": "Michael Brown",
+    "chamber": "House",
+    "date": "2022-04-02",
+    "subject": "H.B. 5500 An Act Concerning School Construction",
+    "text": "Representative Brown abstained from the vote, citing a scheduling conflict.",
+    "source_name": "House Journal",
+    "source_url": "https://www.cga.ct.gov/2022/jdata/hj/2022HJ-00402.htm"
+  }
+]

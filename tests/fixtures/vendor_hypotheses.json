@@ -1,0 +1,13 @@
+[
+  {
+    "hyp_id": "vh-flamig-curaleaf",
+    "vendor_name": "Flamig Farm",
+    "operator_name": "Curaleaf",
+    "town": "Simsbury",
+    "hypothesis": "Flamig Farm's compost/recycling operation handles Curaleaf's cannabis waste",
+    "evidence_found": false,
+    "national_program_only": true,
+    "note": "Flamig is a West Simsbury compost yard that takes only clean organic/yard waste and bars chemicals; no tie to Curaleaf or cannabis waste found. The only 'Curaleaf recycling' anywhere is the national TerraCycle packaging program.",
+    "source_url": "https://www.flamigfarm.example.org/compost"
+  }
+]

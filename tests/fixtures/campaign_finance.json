@@ -1,0 +1,34 @@
+[
+  {
+    "contrib_id": "seec-0001",
+    "contributor_name": "Nutmeg Dispensary LLC",
+    "employer": "Nutmeg Dispensary LLC", "occupation": "Cannabis dispensary",
+    "amount": 250, "date": "2024-03-01",
+    "recipient_committee": "Jane Doe Leadership PAC",
+    "source_url": "https://seec.ct.gov/eCRIS/Search?committee=Jane+Doe+Leadership+PAC"
+  },
+  {
+    "contrib_id": "seec-0002",
+    "contributor_name": "Nutmeg Dispensary LLC",
+    "employer": "Nutmeg Dispensary LLC", "occupation": "Cannabis dispensary",
+    "amount": 250, "date": "2024-05-12",
+    "recipient_committee": "Jane Doe Leadership PAC",
+    "source_url": "https://seec.ct.gov/eCRIS/Search?committee=Jane+Doe+Leadership+PAC"
+  },
+  {
+    "contrib_id": "seec-0003",
+    "contributor_name": "Nutmeg Dispensary LLC",
+    "employer": "Nutmeg Dispensary LLC", "occupation": "Cannabis dispensary",
+    "amount": 250, "date": "2024-07-20",
+    "recipient_committee": "Jane Doe Leadership PAC",
+    "source_url": "https://seec.ct.gov/eCRIS/Search?committee=Jane+Doe+Leadership+PAC"
+  },
+  {
+    "contrib_id": "seec-0099",
+    "contributor_name": "Robert Ordinary",
+    "employer": "Acme Hardware", "occupation": "Retailer",
+    "amount": 100, "date": "2024-02-02",
+    "recipient_committee": "Friends of Michael Brown",
+    "source_url": "https://seec.ct.gov/eCRIS/Search?committee=Friends+of+Michael+Brown"
+  }
+]
