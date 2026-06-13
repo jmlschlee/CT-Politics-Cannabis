@@ -691,6 +691,19 @@ def write_findings_pdf(path: Path, findings: list[Finding], recusals: list,
                           leading=12)
     S.append(Paragraph("<b>" + _esc(DISCLAIMER) + "</b>", disc))
     S.append(Spacer(1, 6))
+    # OFFLINE = synthetic fixtures: say so unmistakably so demo output is NEVER read
+    # as real findings about real people. (Live runs use real, sourced data.)
+    if mode != "LIVE":
+        synth = ParagraphStyle("synth", parent=small, textColor=colors.white,
+                               backColor=colors.HexColor("#7a1e1e"), borderPadding=7,
+                               leading=12)
+        S.append(Paragraph(
+            "&#9888; OFFLINE DEMO &#8212; SYNTHETIC TEST DATA. Every name, business, "
+            "donation, lobbyist, and vote below is a FICTIONAL fixture used to "
+            "demonstrate the format. It is NOT real and describes NO real person. "
+            "Run the program LIVE (the default; omit --offline) for real, sourced "
+            "data from data.ct.gov, SEEC, OSE, and cga.ct.gov.", synth))
+        S.append(Spacer(1, 8))
     S.append(Paragraph(_esc(CAVEAT), note))
     S.append(Spacer(1, 8))
 
@@ -774,21 +787,27 @@ def write_findings_pdf(path: Path, findings: list[Finding], recusals: list,
             col = TIER_COLOR.get(tier, "#333333")
             kin = ("self" if top.get("same_first") and
                    top.get("name_similarity", 0) >= 92 else "self / relative")
-            # all identity/relationship sources for this official (used both for the
-            # inline "verify identity" link by the name AND the verification line).
+            # all identity/relationship sources for this official, used for the inline
+            # source link by the name AND the verification line. Web-evidence sources
+            # (a page that actually NAMES the person) come first; the raw registry/
+            # credential URL last. Only real http(s) links are kept (no dead anchors).
             srcs = []
             for d in ds:
-                for u in (d.get("source_urls", [])
-                          + d.get("resolution", {}).get("sources", [])):
-                    if u and u not in srcs:
+                for u in (d.get("resolution", {}).get("sources", [])
+                          + d.get("source_urls", [])):
+                    if u and u.startswith("http") and u not in srcs:
                         srcs.append(u)
             # YEARS OF ACTIVE SERVICE (context the user asked for, every section).
             yrs = (top.get("years_served") or "").strip()
             served = (f"<br/>Served: <b>{_esc(yrs)}</b>" if yrs
                       else "<br/>Served: <i>(years not in dataset)</i>")
-            # LIVE source link RIGHT BY THE NAME that validates this is the same person.
-            id_link = (f"<br/>{refs.link(srcs[0], 'identity source &#8599;')}"
-                       if srcs else "<br/><font color='#7a1e1e'>no identity source</font>")
+            # Source link RIGHT BY THE NAME. Only the VERIFIED tier asserts the identity
+            # is certain; lower tiers link the source but say "verify".
+            _lbl = ("verified identity source &#8599;" if tier == "CONFIRMED"
+                    else "source &#8212; verify same person &#8599;")
+            id_link = (f"<br/>{refs.link(srcs[0], _lbl)}"
+                       if srcs else "<br/><font color='#7a1e1e'>no identity source "
+                       "&#8212; UNVERIFIED</font>")
             official = (f"<b>{_esc(top['person'])}</b><br/>{_esc(top['role'])}{served}<br/>"
                         f"{_esc(top['party'])}, {_esc(top['district_or_town'])}<br/>"
                         f"<i>({kin})</i>{id_link}")

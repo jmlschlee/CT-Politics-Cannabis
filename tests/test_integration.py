@@ -8,13 +8,13 @@ from src.report import write_all
 
 EXPECTED_FINDINGS = [
     ["Diane Folger", "dcp", "HIT — see findings", "PROBABLE", False, False],
+    ["Gregory Hallowell", "business", "HIT — see findings", "PROBABLE", False, False],
     ["Jane Doe", "donation", "Appearance concern", "PROBABLE", False, False],
     ["Jane Doe", "donation", "Appearance concern", "PROBABLE", False, False],
     ["Jane Doe", "donation", "Appearance concern", "PROBABLE", False, False],
     ["Karen Whitfield", "lobbyist", "Unable to verify", "POSSIBLE/REVIEW", False, True],
     ["Marcus J. Aldenberry", "dcp", "HIT — see findings", "CONFIRMED", True, False],
     ["Paul Hartley", "sfi", "HIT — see findings", "CONFIRMED", True, True],
-    ["Vincent Candelora", "business", "HIT — see findings", "PROBABLE", False, False],
 ]
 
 
@@ -63,7 +63,7 @@ def test_idempotent_offline_zero_network(monkeypatch):
 
 def test_review_queue_has_every_family_lead_and_probable():
     result = Pipeline(offline=True).run(db_path=":memory:")
-    # 3 donations (PROBABLE) + Candelora (PROBABLE) + Folger (PROBABLE) +
+    # 3 donations (PROBABLE) + Hallowell (PROBABLE) + Folger (PROBABLE) +
     # Whitfield lobbyist (family lead) + Hartley SFI (family, kept for audit) = 7
     assert result.counts["review_queue"] == 7
     fams = [r for r in result.review_rows if r["is_family_lead"]]

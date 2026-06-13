@@ -36,7 +36,7 @@ def test_pipeline_offline_flags_legislator_who_is_a_cannabis_lobbyist():
     lob = r.lobbying
     assert lob["cannabis_lobbyist_count"] == 5
     assert lob["org_count"] == 3
-    # Vincent Candelora is in the roster AND the fixture lobbyist list -> same person
+    # Gregory Hallowell is in the roster AND the fixture lobbyist list -> same person
     sm = [m for m in lob["legislator_matches"] if m["same_person"]]
-    assert any(m["legislator"] == "Vincent Candelora" for m in sm)
+    assert any(m["legislator"] == "Gregory Hallowell" for m in sm)
     assert r.counts["cannabis_lobbyists"] == 5

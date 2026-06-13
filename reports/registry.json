@@ -1,5 +1,5 @@
 {
-  "next": 31,
+  "next": 32,
   "history": [
     {
       "number": 1,
@@ -296,6 +296,16 @@
       "date": "2026-06-12",
       "mode": "OFFLINE",
       "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_30.pdf",
+      "downloads_pdf": null,
+      "legislators": 9,
+      "cross_referenced": 9,
+      "host_towns": 1
+    },
+    {
+      "number": 31,
+      "date": "2026-06-12",
+      "mode": "OFFLINE",
+      "report_pdf": "/Users/josiahschlee/Downloads/ct-cannabis-conflicts/reports/CTCannabisPoliticalCheck_31.pdf",
       "downloads_pdf": null,
       "legislators": 9,
       "cross_referenced": 9,

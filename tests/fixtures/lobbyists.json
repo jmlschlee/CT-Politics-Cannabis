@@ -5,7 +5,7 @@
     "client_name": "CT Cannabis Chamber of Commerce",
     "registration_year": 2023,
     "hometown": "Rocky Hill",
-    "source_url": "https://www.oseapps.ct.gov/NewLobbyist/PublicReports/LobbyistSearch.aspx?id=whitfield"
+    "source_url": "https://www.oseapps.ct.gov/NewLobbyist/PublicReports/LobbyistSearch.aspx"
   },
   {
     "lobbyist_id": "lob-generic",
@@ -13,6 +13,6 @@
     "client_name": "CT Hospital Association",
     "registration_year": 2022,
     "hometown": "Hartford",
-    "source_url": "https://www.oseapps.ct.gov/NewLobbyist/PublicReports/LobbyistSearch.aspx?id=pemberton"
+    "source_url": "https://www.oseapps.ct.gov/NewLobbyist/PublicReports/LobbyistSearch.aspx"
   }
 ]

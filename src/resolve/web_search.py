@@ -42,7 +42,7 @@ def _cache_path(query: str):
 
 
 def web_search(query: str, *, max_results: int = 6, offline: bool = False,
-               delay: float = 0.8) -> list[WebResult]:
+               delay: float = 0.4) -> list[WebResult]:
     """DuckDuckGo HTML search. Cached; offline returns cache-only. On any failure
     returns [] (the caller records that the search was attempted but yielded nothing)."""
     cp = _cache_path(query)

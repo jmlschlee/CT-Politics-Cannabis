@@ -5,9 +5,9 @@
     "entity_type": "LLC", "status": "Active",
     "purpose": "Cannabis cultivation and retail",
     "is_cannabis": true,
-    "source_url": "https://service.ct.gov/business/s/onlinebusinesssearch?id=greenleaf",
+    "source_url": "https://service.ct.gov/business/s/onlinebusinesssearch",
     "principals": [
-      {"name": "Vincent Candelora", "role": "member"}
+      {"name": "Gregory Hallowell", "role": "member"}
     ]
   },
   {
@@ -16,7 +16,7 @@
     "entity_type": "LLC", "status": "Active",
     "purpose": "Retail bakery",
     "is_cannabis": false,
-    "source_url": "https://service.ct.gov/business/s/onlinebusinesssearch?id=mapleco",
+    "source_url": "https://service.ct.gov/business/s/onlinebusinesssearch",
     "principals": [
       {"name": "Jane Doe", "role": "member"}
     ]

@@ -18,7 +18,7 @@ cache:
 
 http:
   # Politeness — applied to EVERY live request, scrape or API.
-  per_host_delay_seconds: 2.0
+  per_host_delay_seconds: 0.8
   timeout_seconds: 30
   max_retries: 4
   user_agent_template: "ct-cannabis-conflicts/0.1 (public-interest research; contact={contact})"
@@ -27,7 +27,7 @@ scrape:
   # Browser automation is OFF unless a source's allow_scrape is true AND this is true.
   globally_enabled: false
   headless: true
-  per_host_delay_seconds: 5.0     # extra-slow for interactive portals
+  per_host_delay_seconds: 2.0     # extra-slow for interactive portals
 
 matching:
   # rapidfuzz thresholds (token_sort_ratio, 0-100) for the confidence tiers.

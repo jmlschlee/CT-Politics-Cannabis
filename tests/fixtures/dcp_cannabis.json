@@ -5,21 +5,21 @@
       "name": "Nutmeg Dispensary LLC",
       "entity_type": "dispensary", "license_type": "dispensary-facility",
       "status": "Active",
-      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=dispensary"
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx"
     },
     {
       "entity_id": "dcp-ent-greenvale",
       "name": "Green Vale Micro-Cultivation LLC",
       "entity_type": "micro-cultivator", "license_type": "micro-cultivator",
       "status": "Active",
-      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=micro-cultivator"
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx"
     },
     {
       "entity_id": "dcp-ent-coastal",
       "name": "Coastal Cultivators LLC",
       "entity_type": "cultivator", "license_type": "cultivator",
       "status": "Active",
-      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=cultivator"
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx"
     }
   ],
   "persons": [
@@ -29,7 +29,7 @@
       "role": "key_employee",
       "credential_type": "cannabis-key-employee",
       "entity_name": "Green Vale Micro-Cultivation LLC",
-      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=cannabis-key-employee"
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx"
     },
     {
       "cp_id": "dcp-cred-folger-backer",
@@ -37,7 +37,7 @@
       "role": "backer",
       "credential_type": "cannabis-establishment-backer",
       "entity_name": "Coastal Cultivators LLC",
-      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx?type=cannabis-establishment-backer"
+      "source_url": "https://www.elicense.ct.gov/Lookup/GenerateRoster.aspx"
     }
   ]
 }

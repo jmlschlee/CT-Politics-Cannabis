@@ -100,7 +100,7 @@ class SeecContributionSearch:
     """Thin driver over the eCRIS contribution search ASP.NET form."""
 
     def __init__(self, *, offline: bool = False, refresh: bool = False,
-                 delay: float = 1.5):
+                 delay: float = 0.8):
         self.offline = offline
         self.refresh = refresh
         self.delay = delay
