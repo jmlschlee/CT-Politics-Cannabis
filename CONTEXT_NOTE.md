@@ -2,6 +2,30 @@
 
 Periodically-saved progress for this build. See HANDOFF.md for the resume brief.
 
+## 1.2.0 — LIVE ONLY, NEVER SYNTHETIC DATA (2026-06-12)
+User mandate (journalistic investigative tool; accuracy/truth for legislative
+education): "NEVER EVER USE SYNTHETIC DATA EVER PERIOD." Implemented:
+- **Launcher `CTCannabisPoliticalCheck.py`, single-file program, and `streamlit_app.py`
+  are LIVE ONLY.** Removed the `--offline` flag entirely; both always run
+  `Pipeline(offline=False)` / `MunicipalPipeline(offline=False)`. The single file
+  argparse REJECTS `--offline` (verified).
+- **`build_single_file.py` no longer bundles `tests/fixtures/*`** — the distributed
+  program (446KB, 4 real data files: config.yaml, sources.yaml,
+  known_municipal_findings.json [REAL sourced Glassman], town_attorney_chains.json
+  [REAL sourced firms]) contains ZERO synthetic data.
+- README/Makefile/docstrings updated to live-only + "never synthetic." Removed
+  `make run-offline`; added `make single`.
+- **Test fixtures KEPT under tests/ as engine-validation scaffolding ONLY** (the 64
+  tests call `Pipeline(offline=True)` to validate matching/classification logic
+  deterministically). This is dev-only and NEVER produces a user/report output; the
+  fixtures are not bundled and the program can't reach them. The synthetic-banner code
+  in build.py remains as a defensive guard (only a non-live report would trigger it,
+  i.e. tests).
+- Removed the offline demo PDFs (#28,#30) from ~/Downloads; kept the REAL live report
+  #32. Release v1.2.0 ships the PROGRAM ONLY (no synthetic sample attached).
+- VERSION→1.2.0. 64 tests pass. NOTE: a real LIVE run (~4 min) is the only way to get a
+  report; report #32 = the verified real output (Linares VERIFIED etc.).
+
 ## 1.1.1 — CRITICAL FALSE-ATTRIBUTION FIX + LIVE-FIRST (2026-06-12)
 User: "vincent candelora is nowhere on green leaf holdings llc nor does he lobby for
 cannabis... major hallucination... links lead to broken pages... ALWAYS run live."

@@ -1,5 +1,16 @@
 # HANDOFF — CTCannabisPoliticalCheck (resume brief)
 
+## ⭐ v1.2.0 — LIVE ONLY, NEVER SYNTHETIC DATA (2026-06-12)
+This is a JOURNALISTIC INVESTIGATIVE TOOL. Accuracy/truth is the whole point. Hard rule:
+**NEVER use synthetic/demo/fabricated data in any report.** The program is LIVE ONLY —
+no `--offline`, no fixture-backed reports. `build_single_file.py` does NOT bundle
+`tests/fixtures/`. Test fixtures exist ONLY to validate the engine in `make test`
+(`Pipeline(offline=True)` in the 64 tests) and never reach a report. A real run takes
+~4 min (reduced delays). The verified real output = report #32 (Art Linares VERIFIED,
+all sections, real sourced links). Earlier false positives were ONLY in the (now
+removed) offline demo fixtures that wrongly used real legislator names — fixed in 1.1.1,
+mode removed in 1.2.0. Release: https://github.com/jmlschlee/CT-Politics-Cannabis/releases
+
 ## ⭐ RELEASE 1.0.0 SHIPPED (2026-06-12)
 - **GitHub repo:** https://github.com/jmlschlee/CT-Politics-Cannabis (main = full project).
 - **Release:** https://github.com/jmlschlee/CT-Politics-Cannabis/releases/tag/v1.0.0
