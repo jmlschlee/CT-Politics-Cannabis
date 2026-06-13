@@ -1,5 +1,27 @@
 # HANDOFF — CTCannabisPoliticalCheck (resume brief)
 
+## ⭐ RELEASE 1.0.0 SHIPPED (2026-06-12)
+- **GitHub repo:** https://github.com/jmlschlee/CT-Politics-Cannabis (main = full project).
+- **Release:** https://github.com/jmlschlee/CT-Politics-Cannabis/releases/tag/v1.0.0
+  (id 338882234) — assets: 3 OS zips (macOS/Linux/Windows, identical content +
+  run.sh/run.bat), `streamlit_app.py`, sample-report PDF.
+- Pushed non-destructively (merged the repo's original LICENSE/Initial-commit; my
+  README/v1.0 content kept). All 5 V2 items + the post-V2 fixes are in this release.
+- **Streamlit:** deploy from repo `jmlschlee/CT-Politics-Cannabis`, branch `main`,
+  main file `streamlit_app.py` (light theme pinned in `.streamlit/config.toml`).
+- **Version single source:** `src/report/build.py::VERSION` (1.0.0) / `app_version()`.
+- ⚠️ **ROTATE the GitHub PAT** that was pasted in chat — it was used only in inline
+  push/curl URLs (never written to any committed file or `.git/config`).
+- Post-V2 fixes in this release: §1/§2 Tier column widened (relabel made labels
+  longer); EVERY findings row now shows a Verification line (sources or explicit "no
+  primary source"); municipal Glassman pattern generalized to a CATEGORY across all
+  host towns (§3a official-tie leads + §3b town-attorney chains + §3c roster).
+- To cut a future release: bump `VERSION`, commit, `git push`, then create a release
+  via the GitHub API with `git archive` zips (the repo is NOT self-contained — it's a
+  package, so zips = the tracked tree + run scripts).
+
+
+
 **What it is.** A reproducible Connecticut Cannabis Political Relationship Intelligence
 tool / screening aid for humans (NOT an auto-accusation engine). It cross-references CT
 legislators (and town officials) against cannabis-industry connections from official
