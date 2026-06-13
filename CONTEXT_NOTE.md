@@ -2,6 +2,32 @@
 
 Periodically-saved progress for this build. See HANDOFF.md for the resume brief.
 
+## 1.1.0 — SINGLE FILE + REPORT FEATURES (2026-06-12)
+Release https://github.com/jmlschlee/CT-Politics-Cannabis/releases/tag/v1.1.0 (id
+338883752). User asks handled:
+- **"why is the senator section empty of Linares suddenly"** — because the report in
+  Downloads was the OFFLINE demo (#28); offline fixtures have only Aldenberry/Folger/
+  Candelora (reps), NO senator cannabis ties. **Art Linares only appears in a LIVE run**
+  (resolved from the live ownership network + web). Not a regression. Noted in release.
+- **SINGLE FILE** (headline "this is one program!"): `build_single_file.py` bundles all
+  41 `src/**` modules + 23 data files (config/sources yaml, data/*.json, tests/fixtures/
+  *.json) base64-packed into **`CTCannabisPoliticalCheck_app.py`** (466KB). A meta-path
+  `_EmbeddedLoader` serves `src.*`; data is materialized to `$CTCPC_HOME` (default
+  ~/.ct_cannabis_check) and each module's `__file__` is set to HOME/<path>.py so
+  `config.ROOT = Path(__file__).parent.parent` = HOME and every ROOT-relative read works
+  unchanged. VERIFIED: runs from /tmp with no src/ access, full report. Regenerate after
+  any src/ edit: `python3 build_single_file.py`.
+- **YEARS OF SERVICE** in §1/§2 official cell ("Served: <years_served>").
+- **IDENTITY SOURCE LINK** next to every name (`refs.link(srcs[0],'identity source ↗')`)
+  + per-row "Verification (same-person sources)" line (or red "NO PRIMARY SOURCE").
+- **DISCLAIMER** const `report.build.DISCLAIMER` (verify everything / no legal
+  implications / lawful disclosed activity) — red box on cover + `st.error` in streamlit.
+- **LOBBYING & MONEY**: lobbying section now joins cannabis-lobby orgs to SEEC rows by
+  employer name → donations sub-table (giver→recipient, amount, date). Section renamed
+  "Cannabis Lobbying & Money (CT OSE + SEEC)".
+- VERSION→1.1.0; README "New in 1.1" + single-file note. 64 tests pass. Offline #30.
+  Downloads synced incl. the single file.
+
 ## RELEASE 1.0 + FIXES + MUNICIPAL CATEGORY (2026-06-12)
 After the 5 V2 items, user asked for: municipal Glassman pattern as a generalized
 CATEGORY across all towns; periodic sync of the Downloads .py/CONTEXT/HANDOFF
